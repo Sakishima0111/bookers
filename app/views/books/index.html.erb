@@ -1,7 +1,21 @@
 <h1>Books</h1>
+
+<table>
+  <thead>
+    <tr>
+     <th>Title</th>
+     <th>Body</th>
+     <th colspan="3"></th>
+    </tr>
+  </thead>
+
 <% @books.each do |book| %>
-
-
+  <tbody>
+    <span><%= book.title %></span>
+    <span><%= book.body %></span>
+   </tr>
+  </tbody>
+</table>
 <% end %>
 
 <h2>New book</h2>
@@ -22,3 +36,4 @@
   </div>
 
 <% end %>
+
