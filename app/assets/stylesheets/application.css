@@ -20,8 +20,14 @@
   box-sizing: border-box;
 }
 
+
+
 body{
   margin: 33px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  background-color: #fff;
+  color: #333;
 }
 
 
@@ -36,5 +42,42 @@ body{
 }
 
 .error{
+  padding-left: 10px;
+}
 
+.show-notice{
+  margin: 33px;
+  color: #008000;
+}
+
+.show-p{
+  margin: 33px;
+}
+
+.Newbook{
+  margin: 16.185px 0;
+}
+
+.page-title{
+  margin: 17.42px 0;
+}
+
+.table-head{
+  padding: 1px 1px 5px;
+}
+
+.table-box{
+  padding: 1px 5px 7px;
+}
+
+.field{
+  padding: 0 0 10px;
+}
+
+.form{
+  padding: 0 0 10px;
+}
+
+.action{
+  margin: 0 0 10px;
 }
