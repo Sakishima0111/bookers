@@ -1,3 +1,9 @@
+<body>
+<div>
+　<% if flash[:destroy_success] %>
+    <h2 class="flash-notice"><%= flash[:notice] %></h2>
+  <% end %>
+</div>
 <h1>Books</h1>
 
 <table>
@@ -17,18 +23,28 @@
 
 
 <h2>New book</h2>
-<% if @book.errors[:body].any? %>
-      <div class="error">
-       ・Title <%= @book.errors[:body].first %>
-      </div>
-    <% end %>
-<% if @book.errors[:body].any? %>
-      <div class="error">
-      ・Body <%= @book.errors[:body].first %>
-      </div>
-    <% end %>
-<%= form_with model: @book do |f| %>
 
+<div class="error-message">
+  <% flash.each do |message_type, message| %>
+    <h2 class="flash-message"><%= @book.errors.count %> <%= message %></h2>
+  <% end %>
+
+  <ul>
+  <% if @book.errors[:title].any? %>
+    <div class="error">
+      <li>Title <%= @book.errors[:title].first %></li>
+    </div>
+  <% end %>
+  <% if @book.errors[:body].any? %>
+    <div class="error">
+      <li>Body <%= @book.errors[:body].first %></li>
+    </div>
+  <% end %>
+  </ul>
+</div>
+
+
+<%= form_with model: @book do |f| %>
   <div class="field">
     <div class="title">Title</div>
     <%= f.text_field :title %>
@@ -42,6 +58,7 @@
   <div class="action">
     <%= f.submit 'Create Book' %>
   </div>
-
 <% end %>
+
+</body>
 

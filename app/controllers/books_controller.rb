@@ -6,7 +6,7 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully created"
       redirect_to book_path(@book.id)
     else
-      flash.now[:alert] = "errors prohibited this book from being saved"
+      flash.now[:alert] = "errors prohibited this book from being saved:"
       @books =Book.all
       render :index
     end
@@ -33,8 +33,10 @@ class BooksController < ApplicationController
 
   def destroy
     book = Book.find(params[:id])
-    book.destroy
-    redirect_to books_path
+    if book.destroy
+       flash[:destroy_success] = true
+       redirect_to books_path, notice: "Book was successfully destroyed"
+    end
   end
 
   private
