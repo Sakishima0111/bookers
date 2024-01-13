@@ -1,6 +1,25 @@
 <body>
 <h1 class="page-title">Editing Book</h1>
 
+<div class="error-message">
+  <% flash.each do |message_type, message| %>
+    <h2 class="flash-message"><%= @book.errors.count %> <%= message %></h2>
+  <% end %>
+
+  <ul>
+  <% if @book.errors[:title].any? %>
+    <div class="error">
+      <li>Title <%= @book.errors[:title].first %></li>
+    </div>
+  <% end %>
+  <% if @book.errors[:body].any? %>
+    <div class="error">
+      <li>Body <%= @book.errors[:body].first %></li>
+    </div>
+  <% end %>
+  </ul>
+</div>
+
 <%= form_with model: @book do |f| %>
 <div class="form">
   <div class="field">
@@ -15,9 +34,10 @@
  <div class="action"> <%= f.submit 'Update Book'%></div
 
 <% end %>
+
 <p>
 <%= link_to "Show", book_path(@book.id) %>
-|<%= link_to "Back", books_path(@book.id) %>
+|<%= link_to "Back", books_path %>
 
   </P>
 </div>
